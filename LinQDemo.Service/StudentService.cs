@@ -1,6 +1,7 @@
 ﻿using LinQDemo.Common;
 using LinQDemo.Data;
 using LinQDemo.Data.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace LinQDemo.Service
 
         public IEnumerable<Student> GetByGrade(int grade)
         {
-            return Find(i => i.Class.Grade == grade);
+            return Context.Students.Include(i => i.Class).Where(i => i.Class.Grade == grade);
         }
     }
 }

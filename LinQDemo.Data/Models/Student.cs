@@ -9,7 +9,7 @@ namespace LinQDemo.Data.Models
         public string FirstName { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string LastName { get; set; }
-        public string FullName => FirstName + LastName;
+        public string FullName => $"{FirstName} {LastName}";
         public long? SchoolId { get; set; }
         public long? ClassId { get; set; }
 
