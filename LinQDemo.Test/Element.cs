@@ -23,7 +23,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void First_n_less_than_0()
         {
-            int result = TestData.Numbers.First(i => i < 0);
+            int result = 0;
 
             Assert.AreEqual(-3, result);
         }
@@ -31,7 +31,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void Last_n_greater_than_0()
         {
-            int result = TestData.Numbers.Last(i => i > 0);
+            int result = 0;
 
             Assert.AreEqual(5, result);
         }
@@ -39,7 +39,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void First_even_n()
         {
-            int result = TestData.Numbers.First(i => i % 2 == 0);
+            int result = 0;
 
             Assert.AreEqual(2, result);
         }
@@ -47,7 +47,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void Last_even_n()
         {
-            int result = TestData.Numbers.Last(i => i % 2 == 0);
+            int result = 0;
 
             Assert.AreEqual(-4, result);
         }
@@ -55,7 +55,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void First_n_greater_than_10_if_not_found_return_0()
         {
-            int result = TestData.Numbers.FirstOrDefault(i => i > 10);
+            int result = 0;
 
             Assert.AreEqual(0, result);
         }
@@ -63,7 +63,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void Last_n_less_than_minus_1234_if_not_found_return_0()
         {
-            int result = TestData.Numbers.LastOrDefault(i => i < -1234);
+            int result = 0;
 
             Assert.AreEqual(0, result);
         }
@@ -71,7 +71,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void Last_elephant()
         {
-            string result = TestData.Animals.Last(i => i == "elephant");
+            string result = "";
 
             Assert.AreEqual("elephant", result);
         }
@@ -79,7 +79,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void First_string_having_4_letters()
         {
-            string result = TestData.Animals.First(i => i.Length == 4);
+            string result = "";
 
             Assert.AreEqual("lion", result);
         }
@@ -87,7 +87,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void Last_string_containg_g()
         {
-            string result = TestData.Animals.Last(i => i.Contains("g"));
+            string result = "";
 
             Assert.AreEqual("penguin", result);
         }
@@ -95,7 +95,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void First_string_having_s_as_first_letter()
         {
-            string result = TestData.Animals.First(i => i.StartsWith("s"));
+            string result = "";
 
             Assert.AreEqual("swordfish", result);
         }
@@ -103,7 +103,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void Last_three_letter_long_word_or_null()
         {
-            string result = TestData.Animals.LastOrDefault(s => s.Length == 3);
+            string result = "";
 
             Assert.AreEqual(null, result);
         }
@@ -111,7 +111,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void First_person_born_after_2000()
         {
-            TestData.Person result = TestData.People.First(i => i.Born.Year > 2000);
+            TestData.Person result = TestData.People.First();
 
             Assert.AreEqual(TestData.People[2], result);
         }
@@ -119,7 +119,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void Last_person_with_lastname_ending_with_l()
         {
-            TestData.Person result = TestData.People.Last(i => i.LastName.EndsWith("l"));
+            TestData.Person result = TestData.People.First();
 
             Assert.AreEqual(TestData.People[2], result);
         }
@@ -127,7 +127,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void First_person_born_141th_day_of_year()
         {
-            TestData.Person result = TestData.People.First(i => i.Born.DayOfYear == 141);
+            TestData.Person result = TestData.People.First();
 
             Assert.AreEqual(TestData.People[2], result);
         }
@@ -135,7 +135,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void Last_person_whose_firstname_does_not_start_with_J_or_null()
         {
-            TestData.Person result = TestData.People.LastOrDefault(i => !i.FirstName.StartsWith("J"));
+            TestData.Person result = TestData.People.First();
 
             Assert.AreEqual(null, result);
         }

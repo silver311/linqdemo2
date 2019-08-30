@@ -19,7 +19,7 @@ namespace LinQDemo.Test
         public void GetFirstThreeNumbers_returns_3_ints()
         {
             // First test is solved to show you how to use these exercises.
-            IEnumerable<int> result = TestData.PartitionNumbers.Take(3);
+            IEnumerable<int> result = TestData.PartitionNumbers;
 
             Assert.IsTrue(result.SequenceEqual(new[] { 5, 4, 1 }));
         }

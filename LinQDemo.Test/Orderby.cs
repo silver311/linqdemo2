@@ -28,7 +28,7 @@ namespace LinQDemo.Test
         public void OrderWordsAlphabetically_ReturnThreeWords()
         {
             // Solved for your benefit
-            IEnumerable<string> result = TestData.OrderByWords.OrderBy(word => word);
+            IEnumerable<string> result = TestData.OrderByWords;
 
             Assert.IsTrue(result.SequenceEqual(new string[] { "apple", "blueberry", "cherry" }));
         }
@@ -37,14 +37,14 @@ namespace LinQDemo.Test
         [TestMethod]
         public void OrderWordsAlphabetically_Return5Words()
         {
-            IEnumerable<string> result = TestData.OrderByWordsExtended.OrderBy(word => word);
+            IEnumerable<string> result = TestData.OrderByWordsExtended;
             Assert.IsTrue(result.SequenceEqual(new string[] { "apple", "blueberry", "cherry", "tamarind", "zuchini" }));
         }
 
         [TestMethod]
         public void OrderWordsBySecondLetter_Return5Words()
         {
-            IEnumerable<string> result = TestData.OrderByWordsExtended.OrderBy(i => i[1]);
+            IEnumerable<string> result = TestData.OrderByWordsExtended;
 
             Assert.IsTrue(result.SequenceEqual(new string[] { "tamarind", "cherry", "blueberry", "apple", "zuchini" }));
         }
@@ -53,7 +53,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void OrderWordsByFirstLetterDescendingAlphabetically_Return5Words()
         {
-            IEnumerable<string> result = TestData.OrderByWordsExtended.OrderByDescending(i => i);
+            IEnumerable<string> result = TestData.OrderByWordsExtended;
 
             Assert.IsTrue(result.SequenceEqual(new string[] { "zuchini", "tamarind", "cherry", "blueberry", "apple", }));
         }
@@ -62,7 +62,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void OrderWordsByByLength_Return3Words()
         {
-            IEnumerable<string> result = TestData.OrderByWords.OrderBy(i => i.Length);
+            IEnumerable<string> result = TestData.OrderByWords;
 
             Assert.IsTrue(result.SequenceEqual(new string[] { "apple", "cherry", "blueberry" }));
         }
@@ -70,7 +70,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void OrderByPeopleByPersonsLastNameAlphabetically_returnOrderedPeople()
         {
-            IEnumerable<TestData.Person> result = TestData.People.OrderBy(i => i.LastName);
+            IEnumerable<TestData.Person> result = TestData.People;
 
             Assert.IsTrue(result.SequenceEqual(new TestData.Person[]
             {
@@ -92,19 +92,11 @@ namespace LinQDemo.Test
         {
             string[] words = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
 
-            var result = words.OrderBy(i => i, new CaseInsensitivityComparer());
+            var result = words;
 
             Assert.IsTrue(result.SequenceEqual(new string[] {
                 "AbAcUs", "aPPLE", "BlUeBeRrY", "bRaNcH", "cHeRry", "ClOvEr"
             }));
-        }
-
-        class CaseInsensitivityComparer : IComparer<string>
-        {
-            public int Compare(string left, string right)
-            {
-                return string.Compare(left, right, true);
-            }
         }
 
         // The comparison can be more complex.
@@ -129,39 +121,12 @@ namespace LinQDemo.Test
             Assert.IsTrue(result.SequenceEqual(new string[] { "apple", "zuchini", "blueberry", "cherry", "tamarind" }));
         }
 
-        class SpecialConditionComparer : IComparer<string>
-        {
-            public int Compare(string left, string right)
-            {
-                var leftCalculatedLength = CalculateLength(left);
-                var rightCalculatedLength = CalculateLength(right);
-                if (leftCalculatedLength > rightCalculatedLength)
-                {
-                    return 1;
-                }
-                else if (leftCalculatedLength == rightCalculatedLength)
-                {
-                    return 0;
-                }
-                return -1;
-            }
-
-            private int CalculateLength(string input)
-            {
-                if (input.Length % 2 != 0)
-                {
-                    return input.Length;
-                }
-                return input.Length * 2;
-            }
-        }
-
         [TestMethod]
         public void OrderDoublesFromLargestToSmallest_returnDescendingEnumeration()
         {
             double[] doubles = { 1.7, 2.3, 1.9, 4.1, 2.9 };
 
-            IEnumerable<double> result = doubles.OrderByDescending(i => i);
+            IEnumerable<double> result = doubles;
 
             Assert.IsTrue(result.SequenceEqual(new double[] { 4.1, 2.9, 2.3, 1.9, 1.7 }));
         }
@@ -169,7 +134,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void OrderByBirthDatesOldestToYoungest_returnPersonEnumeration()
         {
-            IEnumerable<TestData.Person> result = TestData.People.OrderBy(i => i.Born);
+            IEnumerable<TestData.Person> result = TestData.People;
 
             Assert.IsTrue(result.SequenceEqual(new TestData.Person[] {
                     new TestData.Person("Jean", "Gean", new DateTime(1950, 12, 1)),
@@ -182,7 +147,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void OrderByBirthDatesYoungestToOldest_returnPersonEnumeration()
         {
-            IEnumerable<TestData.Person> result = TestData.People.OrderByDescending(i => i.Born);
+            IEnumerable<TestData.Person> result = TestData.People;
 
             Assert.IsTrue(result.SequenceEqual(new TestData.Person[] {
                     new TestData.Person("Jill", "Lill", new DateTime(2001, 5, 21)),
@@ -196,7 +161,7 @@ namespace LinQDemo.Test
         public void OrderByLengthAndThenAlphabetically_returnStringNumberation()
         {
             string[] digits = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
-            IEnumerable<string> result = digits.OrderBy(i => i.Length).ThenBy(i => i);
+            IEnumerable<string> result = digits;
 
             Assert.IsTrue(result.SequenceEqual(new string[] { "one", "six", "two", "five", "four", "nine", "zero", "eight", "seven", "three" }));
         }
@@ -214,7 +179,7 @@ namespace LinQDemo.Test
 
             string[] words = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
 
-            IEnumerable<string> result = words.OrderBy(i => i.Length).ThenBy(i => i, new CaseInsensitivityComparer());
+            IEnumerable<string> result = words;
 
             Assert.IsTrue(result.SequenceEqual(new string[] { "aPPLE", "AbAcUs", "bRaNcH", "cHeRry", "ClOvEr", "BlUeBeRrY" }));
         }
@@ -226,9 +191,7 @@ namespace LinQDemo.Test
         {
             string[] digits = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
 
-            IEnumerable<string> result = digits
-                .Where(i => i.Contains("i"))
-                .Reverse();
+            IEnumerable<string> result = digits;
 
             Assert.IsTrue(result.SequenceEqual(new string[] { "nine", "eight", "six", "five" }));
         }

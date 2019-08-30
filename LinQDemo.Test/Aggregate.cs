@@ -16,7 +16,7 @@ namespace LinQDemo.Test
         public void Count_all_numbers()
         {
             // First test is solved to show you how to use these exercises.
-            int result = TestData.Numbers.Count();
+            int result = 0;
 
             Assert.AreEqual(10, result);
         }
@@ -24,7 +24,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void Count_all_occurences_of_1()
         {
-            int result = TestData.Numbers.Count(i => i == 1);
+            int result = 0;
 
             Assert.AreEqual(2, result);
         }
@@ -33,7 +33,7 @@ namespace LinQDemo.Test
         public void Count_all_animals_having_character_count_equal_to_5()
         {
             // Hint: use nested count
-            int result = TestData.Animals.Count(i => i.Length == 5);
+            int result = 0;
 
             Assert.AreEqual(2, result);
         }
@@ -41,7 +41,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void Sum_all_numbers()
         {
-            int result = TestData.Numbers.Sum();
+            int result = 0;
 
             Assert.AreEqual(-2, result);
         }
@@ -49,7 +49,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void Sum_all_characters_in_animal_names()
         {
-            int result = TestData.Animals.Sum(i => i.Length);
+            int result = 0;
 
             Assert.AreEqual(38, result);
         }
@@ -57,7 +57,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void Sum_all_birth_years()
         {
-            int result = TestData.People.Sum(i => i.Born.Year);
+            int result = 0;
 
             Assert.AreEqual(7915, result);
         }
@@ -65,7 +65,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void Find_minimum_number()
         {
-            int result = TestData.Numbers.Min();
+            int result = 0;
 
             Assert.AreEqual(-5, result);
         }
@@ -73,7 +73,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void Find_length_of_shortest_animal_name()
         {
-            int result = TestData.Animals.Min(i => i.Length);
+            int result = 0;
 
             Assert.AreEqual(4, result);
         }
@@ -81,7 +81,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void Find_earliest_birthday()
         {
-            DateTime result = TestData.People.Min(i => i.Born);
+            DateTime result = DateTime.Now;
 
             Assert.AreEqual(new DateTime(1950, 12, 1), result);
         }
@@ -89,7 +89,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void Find_maximum_number()
         {
-            int result = TestData.Numbers.Max();
+            int result = 0;
 
             Assert.AreEqual(5, result);
         }
@@ -97,7 +97,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void Find_length_of_longest_animal_name()
         {
-            int result = TestData.Animals.Max(i => i.Length);
+            int result = 0;
 
             Assert.AreEqual(9, result);
         }
@@ -105,7 +105,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void Find_latest_birthday()
         {
-            DateTime result = TestData.People.Max(i => i.Born);
+            DateTime result = DateTime.Now;
 
             Assert.AreEqual(new DateTime(2001, 5, 21), result);
         }
@@ -113,7 +113,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void Find_average_of_numbers()
         {
-            double result = TestData.Numbers.Average();
+            double result = 0;
 
             Assert.AreEqual(-0.2, result);
         }
@@ -121,7 +121,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void Find_average_of_birth_years()
         {
-            double result = TestData.People.Average(i => i.Born.Year);
+            double result = 0;
 
             Assert.AreEqual(1978.75, result);
         }
@@ -131,7 +131,7 @@ namespace LinQDemo.Test
         {
             // Aggregate is a little bit more complicated
             // so first test is solved to show you how to use it.
-            int result = TestData.Numbers.Aggregate((sum, nextValue) => sum + nextValue);
+            int result = 0;
 
             Assert.AreEqual(-2, result);
         }
@@ -140,7 +140,7 @@ namespace LinQDemo.Test
         public void Aggregate_Product_of_all_numbers()
         {
             // Hint: product is a result of multiplication
-            int result = TestData.Numbers.Aggregate((product, nextValue) => product * nextValue);
+            int result = 0;
 
             Assert.AreEqual(-1800, result);
         }
@@ -154,7 +154,7 @@ namespace LinQDemo.Test
             // if this day is bigger than 15, then substract 10 from it
             // else add 5 to it
             // and add resulting number to your aggregate
-            int result = TestData.People.Aggregate(256, (sum, person) => sum + (person.Born.Day > 15 ? person.Born.Day - 10 : person.Born.Day + 5));
+            int result = 0;
 
             Assert.AreEqual(296, result);
         }

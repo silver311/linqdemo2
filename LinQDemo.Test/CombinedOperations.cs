@@ -31,12 +31,6 @@ namespace LinQDemo.Test
 
             List<char> commonCharacters = new List<char>();
 
-            for (int i = 0; i < result.Count - 1; i++)
-            {
-                char[] intersectionResult = result[i].Intersect(result[i + 1]).ToArray();
-                commonCharacters = commonCharacters.Union(intersectionResult).ToList();
-            }
-
             Assert.IsTrue(commonCharacters.OrderBy(x => x).SequenceEqual(new char[] { 'a', 'i', 'J' }.OrderBy(x => x)));
         }
 
@@ -49,11 +43,7 @@ namespace LinQDemo.Test
         [TestMethod]
         public void GetCharactersCommonToEveryonesFirstNamesNotUsingSetOperations_ReturnCharEnumerable()
         {
-            IEnumerable<char> result = TestData.People.Select(x => x.FirstName.ToCharArray().Distinct())
-                .SelectMany(x => x)
-                .GroupBy(x => x)
-                .Where(g => g.Count() > 1)
-                .Select(g => g.Key);
+            IEnumerable<char> result = TestData.People.Select(x => x.FirstName.ToCharArray().Distinct());
 
             Assert.IsTrue(result.OrderBy(x => x).SequenceEqual(new char[] { 'a', 'i', 'J' }.OrderBy(x => x)));
         }
